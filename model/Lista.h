@@ -1,7 +1,7 @@
 #include<stdlib.h>
 
-#ifdef Lista.h
-#define Lista.h
+#ifndef LISTA_H
+#define LISTA_H
 
 typedef struct nodo
 {
