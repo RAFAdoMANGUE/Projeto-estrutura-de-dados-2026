@@ -57,4 +57,33 @@ void liberarLista(Matriz_Esparsa **lista){
     *lista = NULL;
 }
 
+ListaService:
+
+void DadosMatriz(Matriz_Esparsa **lista) {
+    int lin, col;
+    float valor;
+
+    printf("Digite o numero de linhas da matriz: ");
+    scanf("%d", &lin);
+    printf("Digite o numero de colunas da matriz: ");
+    scanf("%d", &col);
+
+    for (int i = 0; i < lin; i++) {
+        for (int j = 0; j < col; j++) {
+            printf("Valor para posicao [%d][%d]: ", i, j);
+            scanf("%f", &valor);
+            if (valor != 0) {
+                Matriz_Esparsa* novo = CriarNodo(valor, i, j);
+                if (novo != NULL) {
+                    novo->prox = *lista;
+                    *lista = novo;
+                }
+            }
+        }
+    }
+    printf("\nMatriz lida com sucesso.\n");
+
+}
+
+
 
