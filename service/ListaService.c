@@ -85,5 +85,43 @@ void DadosMatriz(Matriz_Esparsa **lista) {
 
 }
 
+void somaMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
+    int linhas, colunas;
+    float mA, mB, soma;
+
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+
+            mA = 0;
+            Matriz_Esparsa *auxA = A;
+            while (auxA != NULL) {
+                if (auxA->lin == i && auxA->col == j) {
+                    mA = auxA->dado;
+                    break;
+                }
+                auxA = auxA->prox;
+            }
+
+            mB = 0;
+            Matriz_Esparsa *auxB = B;
+            while (auxB != NULL) {
+                if (auxB->lin == i && auxB->col == j) {
+                    mB = auxB->dado;
+                    break;
+                }
+                auxB = auxB->prox;
+            }
+            soma = mA + mB;
+            if (soma != 0) {
+                Matriz_Esparsa *novo = CriarNodo(soma, i, j);
+                if (novo != NULL) {
+                    novo->prox = *C;
+                    *C = novo;
+                }
+            }
+        }
+    }
+    printf("Operacao de soma concluida.\n");
+}
 
 

@@ -34,6 +34,9 @@ int menu() {
             case 4:
                 liberarLista(&lista);
                 break;
+            case 5:
+                DadosMatriz(&lista);
+                break;
             default:
                 printf("nenhuma função selecionada.\n");
         }
