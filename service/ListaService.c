@@ -1,6 +1,7 @@
 // funções da lista
 #include<stdio.h>
 #include<stdlib.h>
+#include <stdbool.h>
 #include "../model/Lista.h"
 
 
@@ -16,16 +17,15 @@ Matriz_Esparsa* CriarNodo(float dado,int lin,int col){
 
     return novo;
 }
+bool validaTamanho(int lin, int col,int linhaMax,int colunaMax){
+    return ((0<= lin) && (lin<linhaMax) && (0<=col)&&(col< colunaMax));
+}
 
-void inserirLista(Matriz_Esparsa **lista){
-    float dado;
-    int lin;
-    int col;
+void inserirLista(Matriz_Esparsa **lista,float dado, int lin, int col){
 
-    scanf("%f%d%d",&dado,&lin,&col);
     Matriz_Esparsa* novo = CriarNodo(dado,lin,col);
     if(novo == NULL){
-        return NULL;
+        return;
     }
     novo -> prox = *lista;
     *lista = novo;
@@ -57,7 +57,6 @@ void liberarLista(Matriz_Esparsa **lista){
     *lista = NULL;
 }
 
-ListaService:
 
 void DadosMatriz(Matriz_Esparsa **lista) {
     int lin, col;

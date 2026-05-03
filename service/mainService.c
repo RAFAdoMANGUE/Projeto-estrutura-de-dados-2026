@@ -25,8 +25,20 @@ int menu() {
                 criarMatriz();
                 break;
             case 2:
-                printf("qual o dado, coluna e linha que precisa inserir: ");
-                inserirLista(&lista);
+                printf("Qual dimensao da matriz?: linha, coluna: \n");
+                int linhaMax = 0,colunaMax = 0,lin = 0,col = 0;
+                float dado = 1;
+                scanf("%d%d",&linhaMax,&colunaMax);
+
+                while(dado != 0){
+                    printf("qual o dado, coluna e linha que precisa inserir: \n");
+                    scanf("%f%d%d",&dado,&lin,&col);
+                    if(validaTamanho(lin,col,linhaMax,colunaMax))
+                        inserirLista(&lista,dado,lin,col);
+                    else
+                        printf("linha ou coluna invalida.");
+                }
+
                 break;
             case 3:
                 mostrarLista(lista);
