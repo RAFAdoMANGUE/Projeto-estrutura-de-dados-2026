@@ -66,7 +66,7 @@ int menu() {
                 break;
             }
             case 5:
-                DadosMatriz(&lista[contador]);
+
                 break;
             case 6:
                 printf("\nQuais matrizes voce quer somar:\n ");
