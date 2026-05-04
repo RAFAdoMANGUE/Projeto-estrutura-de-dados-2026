@@ -42,7 +42,7 @@ int menu() {
                 scanf("%d%d",&linhaMax[contador],&colunaMax[contador]);
 
                 do{
-                    printf("qual o dado, coluna e linha que precisa inserir: \n");
+                    printf("qual o dado, linha e coluna que precisa inserir: \n");
                     scanf("%f%d%d",&dado,&lin,&col);
                     if(validaTamanho(lin,col,linhaMax[contador],colunaMax[contador]) && dado!=0)
                         inserirLista(&lista[contador],dado,lin,col);
