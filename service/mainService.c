@@ -23,6 +23,7 @@ int menu() {
         printf("%10s", "3 - Mostrar lista\n");
         printf("%10s", "4 - Esvaziar matriz\n");
         printf("%10s","6 - Soma\n");
+        printf("%10s","7 - subtracao\n");
         printf("%10s", "0 - Para encerrar\n");
 
         printf("====================\n");
@@ -83,6 +84,19 @@ int menu() {
                     printf("\ndimensoes diferentes.\n");
 
                 break;
+            case 7:{
+                int pesquisaA = 0,pesquisaB = 0;
+                printf("\nquais matrizes voce quer subtrair?: ");
+                quantidadeListas(contador);
+                scanf("%d%d", &pesquisaA,&pesquisaB);
+                if(linhaMax[pesquisaA] == linhaMax[pesquisaB] && colunaMax[pesquisaA] == colunaMax[pesquisaB]){
+                    subMatriz(lista[pesquisaA],lista[pesquisaB], &lista[contador]);
+                    contador++;
+                }
+                else
+                    printf("\ndimensoes diferentes.\n");
+                break;
+            }
             default:
                 printf("\nnenhuma funcao selecionada.\n");
         }
