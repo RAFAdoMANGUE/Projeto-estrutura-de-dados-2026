@@ -87,7 +87,7 @@ int menu() {
                 break;
             case 7:{
                 int pesquisaA = 0,pesquisaB = 0;
-                printf("\nquais matrizes voce quer subtrair?: ");
+                printf("\nquais matrizes voce quer subtrair?:\n ");
                 quantidadeListas(contador);
                 scanf("%d%d", &pesquisaA,&pesquisaB);
                 if(linhaMax[pesquisaA] == linhaMax[pesquisaB] && colunaMax[pesquisaA] == colunaMax[pesquisaB]){

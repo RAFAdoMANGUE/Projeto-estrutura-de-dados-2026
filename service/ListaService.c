@@ -101,7 +101,11 @@ void subMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
 
 
 void multMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
-
+    *C = NULL;
+    if (A == NULL || B == NULL) {
+    printf("Operacao concluida.\n");
+        return;
+    }
     Matriz_Esparsa *auxA = A;
     while (auxA != NULL) {
         Matriz_Esparsa *auxB = B;
