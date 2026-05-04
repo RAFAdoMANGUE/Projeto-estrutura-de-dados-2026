@@ -21,6 +21,7 @@ int menu() {
         printf("%10s","2 - Criar uma nova matriz\n");
         printf("%10s", "3 - Mostrar lista\n");
         printf("%10s", "4 - Esvaziar matriz\n");
+        printf("%10s", "6 - Soma\n");
         printf("%10s", "0 - Para encerrar\n");
 
         printf("====================\n");
@@ -62,6 +63,13 @@ int menu() {
                 break;
             case 5:
                 DadosMatriz(&lista[contador]);
+                break;
+            case 6:
+                printf("\nQuais matrizes voce quer somar:");
+                int pesquisaA=0,pesquisaB =0;
+                scanf("%d%d", &pesquisaA, &pesquisaB);
+                somaMatriz (&lista[pesquisaA], &lista[pesquisaB], &lista[contador+1]);
+                contador++;
                 break;
             default:
                 printf("nenhuma funcao selecionada.\n");

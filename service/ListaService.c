@@ -84,43 +84,92 @@ void DadosMatriz(Matriz_Esparsa **lista) {
 
 }
 
-void somaMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
-    int linhas, colunas;
-    float mA, mB, soma;
 
-    for (int i = 0; i < linhas; i++) {
-        for (int j = 0; j < colunas; j++) {
+//OPERAÇÕES MATEMÁTICAS
 
-            mA = 0;
-            Matriz_Esparsa *auxA = A;
-            while (auxA != NULL) {
-                if (auxA->lin == i && auxA->col == j) {
-                    mA = auxA->dado;
-                    break;
-                }
-                auxA = auxA->prox;
-            }
+void atualizaLista(Matriz_Esparsa **lista, float valor, int lin, int col) {
+    Matriz_Esparsa *aux = *lista;
 
-            mB = 0;
-            Matriz_Esparsa *auxB = B;
-            while (auxB != NULL) {
-                if (auxB->lin == i && auxB->col == j) {
-                    mB = auxB->dado;
-                    break;
-                }
-                auxB = auxB->prox;
-            }
-            soma = mA + mB;
-            if (soma != 0) {
-                Matriz_Esparsa *novo = CriarNodo(soma, i, j);
-                if (novo != NULL) {
-                    novo->prox = *C;
-                    *C = novo;
-                }
-            }
-        }
+    while (aux != NULL) {
+        if (aux->lin == lin && aux->col == col) {
+            aux->dado += valor;
+            return;
+        }        aux = aux->prox;
     }
-    printf("Operacao de soma concluida.\n");
+    inserirLista(lista, valor, lin, col);
+}
+
+void somaMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
+
+    while (A != NULL) {
+        atualizaLista(C, A->dado, A->lin, A->col);
+        A = A->prox;
+    }
+    while (B != NULL) {
+        atualizaLista(C, B->dado, B->lin, B->col);
+        B = B->prox;
+    }
+    printf("Operacao concluida.\n");
 }
 
 
+void subMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
+
+    while (A != NULL) {
+        atualizaLista(C, A->dado, A->lin, A->col);
+        A = A->prox;
+    }
+    while (B != NULL) {
+        atualizaLista(C, -B->dado, B->lin, B->col);
+        B = B->prox;
+    }
+    printf("Operacao concluida.\n");
+}
+
+
+void multMatriz(Matriz_Esparsa *A, Matriz_Esparsa *B, Matriz_Esparsa **C) {
+
+    Matriz_Esparsa *auxA = A;
+    while (auxA != NULL) {
+        Matriz_Esparsa *auxB = B;
+        while (auxB != NULL) {
+            if (auxA->col == auxB->lin) {
+                float valor = auxA->dado * auxB->dado;
+                atualizaLista(C, valor, auxA->lin, auxB->col);
+            }
+            auxB = auxB->prox;
+        }
+        auxA = auxA->prox;
+    }
+    printf("Operacao concluida.\n");
+}
+
+void MatrizTrans(Matriz_Esparsa *A, Matriz_Esparsa **T) {
+
+    while (A != NULL) {
+        inserirLista(T, A->dado, A->col, A->lin);
+        A = A->prox;
+    }
+
+    printf("Transposta gerada.\n");
+}
+
+float listCompleta(Matriz_Esparsa *lista, int lin, int col) {
+    while (lista != NULL) {
+        if (lista->lin == lin && lista->col == col)
+            return lista->dado;
+        lista = lista->prox;
+    }
+    return 0;
+}
+
+void diagonalPrincipal(Matriz_Esparsa *lista, int tamanho) {
+
+    printf("Diagonal principal: ");
+
+    for (int i = 0; i < tamanho; i++) {
+        printf("%.2f ", listCompleta(lista, i, i));
+    }
+
+    printf("\n");
+}
