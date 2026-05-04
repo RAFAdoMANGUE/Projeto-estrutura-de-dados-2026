@@ -39,14 +39,16 @@ int menu() {
                 float dado = 1;
                 scanf("%d%d",&linhaMax[contador],&colunaMax[contador]);
 
-                while(dado != 0){
+                do{
                     printf("qual o dado, coluna e linha que precisa inserir: \n");
                     scanf("%f%d%d",&dado,&lin,&col);
-                    if(validaTamanho(lin,col,linhaMax[contador],colunaMax[contador]))
+                    if(validaTamanho(lin,col,linhaMax[contador],colunaMax[contador]) && dado!=0)
                         inserirLista(&lista[contador],dado,lin,col);
                     else
-                        printf("\nlinha ou coluna invalida.");
+                        printf("\nlinha ou coluna invalida.\n");
+
                 }
+                while(dado != 0);
                 contador++;
                 break;
             case 3:{
