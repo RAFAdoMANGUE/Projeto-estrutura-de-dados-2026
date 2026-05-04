@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include "ListaService.c"
 #include "matrizService.c"
+#include "../utils/Utils.c"
 #define MAX 100
 int menu() {
     int opcao = 0;
@@ -21,7 +22,7 @@ int menu() {
         printf("%10s","2 - Criar uma nova matriz\n");
         printf("%10s", "3 - Mostrar lista\n");
         printf("%10s", "4 - Esvaziar matriz\n");
-        printf("%10s", "6 - Soma\n");
+        printf("%10s","6 - Soma\n");
         printf("%10s", "0 - Para encerrar\n");
 
         printf("====================\n");
@@ -44,35 +45,44 @@ int menu() {
                     if(validaTamanho(lin,col,linhaMax[contador],colunaMax[contador]))
                         inserirLista(&lista[contador],dado,lin,col);
                     else
-                        printf("linha ou coluna invalida.");
+                        printf("\nlinha ou coluna invalida.");
                 }
                 contador++;
                 break;
             case 3:{
                 int pesquisa=0;
-                for(i=0;i<contador;i++){
-                    printf("\nmatriz: %d",i);
-                }
                 printf("\nQUal matriz voce quer pesquisar?: ");
+                quantidadeListas(contador);
                 scanf("%d",&pesquisa);
                 mostrarLista(lista[pesquisa]);
                 break;
             }
-            case 4:
-                liberarLista(&lista[contador]);
+            case 4:{
+                int pesquisa = 0;
+                printf("\nQual matriz voce quer excluir?\n");
+                scanf("%d",&pesquisa);
+                liberarLista(&lista[pesquisa]);
+                printf("\nLista excluida com sucesso. ");
                 break;
+            }
             case 5:
                 DadosMatriz(&lista[contador]);
                 break;
             case 6:
-                printf("\nQuais matrizes voce quer somar:");
-                int pesquisaA=0,pesquisaB =0;
+                printf("\nQuais matrizes voce quer somar:\n ");
+                int pesquisaA=0,pesquisaB=0;
+                quantidadeListas(contador);
                 scanf("%d%d", &pesquisaA, &pesquisaB);
-                somaMatriz (&lista[pesquisaA], &lista[pesquisaB], &lista[contador+1]);
-                contador++;
+                if(linhaMax[pesquisaA] == linhaMax[pesquisaB] && colunaMax[pesquisaA] == colunaMax[pesquisaB]){
+                    somaMatriz (lista[pesquisaA],lista[pesquisaB], &lista[contador]);
+                    contador++;
+                }
+                else
+                    printf("\ndimensoes diferentes.\n");
+
                 break;
             default:
-                printf("nenhuma funcao selecionada.\n");
+                printf("\nnenhuma funcao selecionada.\n");
         }
     }while(opcao != 0);
 
