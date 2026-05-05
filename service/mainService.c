@@ -26,6 +26,7 @@ int menu() {
         printf("%10s", "7 - subtracao\n");
         printf("%10s", "8 - multiplicao\n");
         printf("%10s", "9 - multiplicao\n");
+        printf("%10s", "10 - mostrar matriz\n");
         printf("%10s", "0 - Para encerrar\n");
 
         printf("====================\n");
