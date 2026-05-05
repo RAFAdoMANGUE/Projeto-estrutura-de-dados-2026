@@ -25,7 +25,9 @@ int menu() {
         printf("%10s", "6 - Soma\n");
         printf("%10s", "7 - subtracao\n");
         printf("%10s", "8 - multiplicao\n");
-        printf("%10s", "9 - multiplicao\n");
+        printf("%10s", "9 - Transposta\n");
+        printf("%10s", "10 - Mostrar Matriz\n");
+        printf("%10s", "11 - Diagonal principal\n");
         printf("%10s", "0 - Para encerrar\n");
 
         printf("====================\n");
@@ -129,6 +131,14 @@ int menu() {
                 int pesquisa;
                 scanf("%d",&pesquisa);
                 mostrarMatriz(lista[pesquisa],linhaMax[pesquisa],colunaMax[pesquisa]);
+                break;
+            }
+            case 11:{
+                printf("\nQual matriz voce quer mostrar a diagonal principal?: \n");
+                int pesquisaA=0;
+                quantidadeListas(contador);
+                scanf("%d",&pesquisaA);
+                diagonalPrincipal(lista[pesquisaA],linhaMax[pesquisaA]);
                 break;
             }
             default:
