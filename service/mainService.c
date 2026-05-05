@@ -19,15 +19,15 @@ int menu() {
 
         printf("%10s","MENU\n");
         //printf("%10s", "1 - Criar Matriz\n");
-        printf("%10s", "2 - Criar uma nova matriz\n");
-        printf("%10s", "3 - Mostrar lista\n");
-        printf("%10s", "4 - Esvaziar matriz\n");
-        printf("%10s", "6 - Soma\n");
-        printf("%10s", "7 - subtracao\n");
-        printf("%10s", "8 - multiplicao\n");
-        printf("%10s", "9 - multiplicao\n");
-        printf("%10s", "10 - mostrar matriz\n");
-        printf("%10s", "0 - Para encerrar\n");
+        printf("%10s", " 2 - Criar uma nova matriz\n");
+        printf("%10s", " 3 - Mostrar lista\n");
+        printf("%10s", " 4 - Esvaziar matriz\n");
+        printf("%10s", " 6 - Soma\n");
+        printf("%10s", " 7 - subtracao\n");
+        printf("%10s", " 8 - multiplicao\n");
+        printf("%10s", " 9 - multiplicao\n");
+        printf("%10s", " 10 - mostrar matriz\n");
+        printf("%10s", " 0 - Para encerrar\n");
 
         printf("====================\n");
 
