@@ -15,29 +15,25 @@ int menu() {
     }
 
     do{
-        printf("====================\n");
+        printf("===========================\n");
 
         printf("%10s","MENU\n");
-        //printf("%10s", "1 - Criar Matriz\n");
-        printf("%10s", " 2 - Criar uma nova matriz\n");
-        printf("%10s", " 3 - Mostrar lista\n");
-        printf("%10s", " 4 - Esvaziar matriz\n");
-        printf("%10s", " 6 - Soma\n");
-        printf("%10s", " 7 - subtracao\n");
-        printf("%10s", " 8 - multiplicao\n");
-        printf("%10s", " 9 - multiplicao\n");
-        printf("%10s", " 10 - mostrar matriz\n");
+        printf("%10s", " 1 - Criar uma nova matriz\n");
+        printf("%10s", " 2 - Mostrar lista\n");
+        printf("%10s", " 3 - Esvaziar matriz\n");
+        printf("%10s", " 4 - Mostrar matriz\n");
+        printf("%10s", " 5 - Somar Matriz\n");
+        printf("%10s", " 6 - Subtratir matriz\n");
+        printf("%10s", " 7 - Multiplicar matriz\n");
+        printf("%10s", " 8 - Gerar matriz transposta\n");
+        printf("%10s", " 9 - Diagonal principal de uma matriz\n");
         printf("%10s", " 0 - Para encerrar\n");
 
-        printf("====================\n");
+        printf("===========================\n");
 
         scanf("%d", &opcao);
         switch (opcao){
             case 1:
-                printf("qual tamanho da sua matriz?: ");
-                criarMatriz();
-                break;
-            case 2:
                 printf("Qual dimensao da matriz?: linha, coluna: \n");
                 int lin = 0,col = 0;
                 float dado = 1;
@@ -50,12 +46,11 @@ int menu() {
                         inserirLista(&lista[contador],dado,lin,col);
                     else
                         printf("\nlinha ou coluna invalida.\n");
-
                 }
                 while(dado != 0);
                 contador++;
                 break;
-            case 3:{
+            case 2:{
                 int pesquisa=0;
                 printf("\nQUal matriz voce quer pesquisar?: ");
                 quantidadeListas(contador);
@@ -63,18 +58,25 @@ int menu() {
                 mostrarLista(lista[pesquisa]);
                 break;
             }
-            case 4:{
+            case 3:{
                 int pesquisa = 0;
                 printf("\nQual matriz voce quer excluir?\n");
+                quantidadeListas(contador);
                 scanf("%d",&pesquisa);
                 liberarLista(&lista[pesquisa]);
                 printf("\nLista excluida com sucesso. ");
                 break;
             }
-            case 5:
 
+            case 4:{
+                printf("\nQual matriz voce quer mostrar?: \n");
+                quantidadeListas(contador);
+                int pesquisa;
+                scanf("%d",&pesquisa);
+                mostrarMatriz(lista[pesquisa],linhaMax[pesquisa],colunaMax[pesquisa]);
                 break;
-            case 6:{
+            }
+            case 5:{
                 printf("\nQuais matrizes voce quer somar:\n ");
                 int pesquisaA=0,pesquisaB=0;
                 quantidadeListas(contador);
@@ -85,9 +87,9 @@ int menu() {
                 }
                 else
                     printf("\ndimensoes diferentes.\n");
-            }
                 break;
-            case 7:{
+            }
+            case 6:{
                 int pesquisaA = 0,pesquisaB = 0;
                 printf("\nquais matrizes voce quer subtrair?:\n ");
                 quantidadeListas(contador);
@@ -100,7 +102,7 @@ int menu() {
                     printf("\ndimensoes diferentes.\n");
                 break;
             }
-            case 8:{
+            case 7:{
                 printf("\nQuais matrizes voces quer multiplicar?: \n");
                 int pesquisaA=0,pesquisaB=0;
                 quantidadeListas(contador);
@@ -112,9 +114,9 @@ int menu() {
                 }
                 else
                     printf("\ndimensoes diferentes.\n");
-
+                break;
             }
-             case 9:{
+            case 8:{
                 printf("\nQual matriz você quer deixar transposta? \n");
                 int pesquisaA=0;
                 quantidadeListas(contador);
@@ -124,12 +126,12 @@ int menu() {
                 printf("Matriz transposta gerada com sucesso! \n");
                 break;
 		    }
-            case 10:{
-                printf("\nQual matriz voce quer mostrar?: \n");
+            case 9:{
+                printf("\nQual matriz voce quer mostrar a diagonal principal?: \n");
+                int pesquisaA=0;
                 quantidadeListas(contador);
-                int pesquisa;
-                scanf("%d",&pesquisa);
-                mostrarMatriz(lista[pesquisa],linhaMax[pesquisa],colunaMax[pesquisa]);
+                scanf("%d",&pesquisaA);
+                diagonalPrincipal(lista[pesquisaA],linhaMax[pesquisaA]);
                 break;
             }
             default:

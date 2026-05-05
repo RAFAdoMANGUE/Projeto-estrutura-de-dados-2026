@@ -8,3 +8,7 @@ void quantidadeListas(int quantidade){
         printf("\n%d\n",i);
     }
 }
+
+bool validaOpcao(int opcao){
+    return(0<opcao<10);
+}
