@@ -19,12 +19,13 @@ int menu() {
 
         printf("%10s","MENU\n");
         //printf("%10s", "1 - Criar Matriz\n");
-        printf("%10s","2 - Criar uma nova matriz\n");
+        printf("%10s", "2 - Criar uma nova matriz\n");
         printf("%10s", "3 - Mostrar lista\n");
         printf("%10s", "4 - Esvaziar matriz\n");
-        printf("%10s","6 - Soma\n");
-        printf("%10s","7 - subtracao\n");
+        printf("%10s", "6 - Soma\n");
+        printf("%10s", "7 - subtracao\n");
         printf("%10s", "8 - multiplicao\n");
+        printf("%10s", "9 - multiplicao\n");
         printf("%10s", "0 - Para encerrar\n");
 
         printf("====================\n");
@@ -110,14 +111,25 @@ int menu() {
                 }
                 else
                     printf("\ndimensoes diferentes.\n");
-                break;
+
             }
-            case 9:{
+             case 9:{
+                printf("\nQual matriz você quer deixar transposta? \n");
+                int pesquisaA=0;
+                quantidadeListas(contador);
+                scanf("%d", &pesquisaA);
+                MatrizTrans(lista[pesquisaA], &lista[contador]);
+                contador++;
+                printf("Matriz transposta gerada com sucesso! \n");
+                break;
+		    }
+            case 10:{
                 printf("\nQual matriz voce quer mostrar?: \n");
                 quantidadeListas(contador);
                 int pesquisa;
                 scanf("%d",&pesquisa);
                 mostrarMatriz(lista[pesquisa],linhaMax[pesquisa],colunaMax[pesquisa]);
+                break;
             }
             default:
                 printf("\nnenhuma funcao selecionada.\n");
