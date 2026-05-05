@@ -110,8 +110,15 @@ int menu() {
                 }
                 else
                     printf("\ndimensoes diferentes.\n");
-            }
                 break;
+            }
+            case 9:{
+                printf("\nQual matriz voce quer mostrar?: \n");
+                quantidadeListas(contador);
+                int pesquisa;
+                scanf("%d",&pesquisa);
+                mostrarMatriz(lista[pesquisa],linhaMax[pesquisa],colunaMax[pesquisa]);
+            }
             default:
                 printf("\nnenhuma funcao selecionada.\n");
         }

@@ -30,6 +30,14 @@ void inserirLista(Matriz_Esparsa **lista,float dado, int lin, int col){
     novo -> prox = *lista;
     *lista = novo;
 }
+float listCompleta(Matriz_Esparsa *lista, int lin, int col) {
+    while (lista != NULL) {
+        if (lista->lin == lin && lista->col == col)
+            return lista->dado;
+        lista = lista->prox;
+    }
+    return 0;
+}
 
 void mostrarLista(Matriz_Esparsa *lista) {
     Matriz_Esparsa *atual = lista;
@@ -44,6 +52,22 @@ void mostrarLista(Matriz_Esparsa *lista) {
                atual->dado, atual->lin, atual->col);
 
         atual = atual->prox; // vai para o próximo nodo
+    }
+}
+void mostrarMatriz(Matriz_Esparsa *lista,int linhaMaxima,int colunaMaxima) {
+    Matriz_Esparsa *atual = lista;
+    int i,j;
+    if (atual == NULL) {
+        printf("Lista vazia\n");
+        return;
+    }
+
+    for(i=0;i<linhaMaxima;i++){
+        printf("|");
+        for(j=0;j<colunaMaxima;j++){
+             printf("%8.2f ", listCompleta(lista, i, j));
+            }
+        printf("|\n");
     }
 }
 
@@ -131,14 +155,6 @@ void MatrizTrans(Matriz_Esparsa *A, Matriz_Esparsa **T) {
     printf("Transposta gerada.\n");
 }
 
-float listCompleta(Matriz_Esparsa *lista, int lin, int col) {
-    while (lista != NULL) {
-        if (lista->lin == lin && lista->col == col)
-            return lista->dado;
-        lista = lista->prox;
-    }
-    return 0;
-}
 
 void diagonalPrincipal(Matriz_Esparsa *lista, int tamanho) {
 
