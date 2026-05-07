@@ -83,6 +83,8 @@ int menu() {
                 scanf("%d%d", &pesquisaA, &pesquisaB);
                 if(linhaMax[pesquisaA] == linhaMax[pesquisaB] && colunaMax[pesquisaA] == colunaMax[pesquisaB]){
                     somaMatriz (lista[pesquisaA],lista[pesquisaB], &lista[contador]);
+                    linhaMax[contador] = linhaMax[pesquisaA];
+                    colunaMax[contador] = colunaMax[pesquisaA];
                     contador++;
                 }
                 else
@@ -96,6 +98,8 @@ int menu() {
                 scanf("%d%d", &pesquisaA,&pesquisaB);
                 if(linhaMax[pesquisaA] == linhaMax[pesquisaB] && colunaMax[pesquisaA] == colunaMax[pesquisaB]){
                     subMatriz(lista[pesquisaA],lista[pesquisaB], &lista[contador]);
+                    linhaMax[contador] = linhaMax[pesquisaA];
+                    colunaMax[contador] = colunaMax[pesquisaA];
                     contador++;
                 }
                 else
