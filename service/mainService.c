@@ -42,7 +42,7 @@ int menu() {
                 do{
                     printf("qual o dado, linha e coluna que precisa inserir: \n");
                     scanf("%f%d%d",&dado,&lin,&col);
-                    if(validaTamanho(lin,col,linhaMax[contador],colunaMax[contador]) && dado!=0)
+                    if((validaTamanho(lin,col,linhaMax[contador],colunaMax[contador])) && (dado!=0))
                         inserirLista(&lista[contador],dado,lin,col);
                     else
                         printf("\nlinha ou coluna invalida.\n");
@@ -108,8 +108,9 @@ int menu() {
                 quantidadeListas(contador);
                 scanf("%d%d", &pesquisaA, &pesquisaB);
                 if(colunaMax[pesquisaA] == linhaMax[pesquisaB]){
-                    lista[contador] = NULL;
                     multMatriz (lista[pesquisaA],lista[pesquisaB], &lista[contador]);
+                    linhaMax[contador] = linhaMax[pesquisaA];
+                    colunaMax[contador] = colunaMax[pesquisaB];
                     contador++;
                 }
                 else
@@ -122,6 +123,8 @@ int menu() {
                 quantidadeListas(contador);
                 scanf("%d", &pesquisaA);
                 MatrizTrans(lista[pesquisaA], &lista[contador]);
+                linhaMax[contador] = colunaMax[pesquisaA];
+                colunaMax[contador] = linhaMax[pesquisaA];
                 contador++;
                 printf("Matriz transposta gerada com sucesso! \n");
                 break;
